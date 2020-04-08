@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MymTestApp</string>
+
+    <string name="title_format">Title:\n%s</string>
+    <string name="author_format">Author:\n%s</string>
+    <string name="created_at_format">Created at:\n%s</string>
+    <string name="no_items_selected">No items selected</string>
+    <plurals name="items_selected_format">
+        <item quantity="zero">No items selected</item>
+        <item quantity="one">%d item selected</item>
+        <item quantity="other">%d items selected</item>
+    </plurals>
+</resources>
