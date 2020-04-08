@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity implements PostsAdapter.OnPostCli
 
     @Override
     public void onPostClicked(int position) {
+        adapter.onCheckboxClicked(position);
         int count = adapter.getSelectedItems().size();
 
         String text = getResources().getQuantityString(R.plurals.items_selected_format, count);

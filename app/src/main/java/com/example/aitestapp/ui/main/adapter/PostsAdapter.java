@@ -42,7 +42,7 @@ public class PostsAdapter extends RecyclerViewAdapter<Hit, PostsAdapter.Holder> 
         return result;
     }
 
-    private void onCheckboxClicked(int position) {
+    public void onCheckboxClicked(int position) {
         if (selectedItems.indexOfKey(position) >= 0) {
             selectedItems.delete(position);
         } else {
