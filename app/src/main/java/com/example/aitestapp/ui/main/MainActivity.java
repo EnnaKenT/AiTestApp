@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements PostsAdapter.OnPostCli
     public void onPostClicked(int position) {
         int count = adapter.getSelectedItems().size();
 
-        String text;
-//        toolbarTextView.setText();
+        String text = getResources().getQuantityString(R.plurals.items_selected_format, count);
+        toolbarTextView.setText(text);
     }
 }
