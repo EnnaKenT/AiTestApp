@@ -31,6 +31,10 @@ public class PostsAdapter extends RecyclerViewAdapter<Hit, PostsAdapter.Holder> 
         this.onItemClicked = listener;
     }
 
+    public void refresh() {
+        selectedItems.clear();
+    }
+
     public List<Hit> getSelectedItems() {
         List<Hit> result = new LinkedList<>();
         for (int i = 0; i < selectedItems.size(); i++) {

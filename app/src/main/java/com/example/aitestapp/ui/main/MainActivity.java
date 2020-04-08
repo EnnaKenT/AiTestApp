@@ -41,7 +41,10 @@ public class MainActivity extends BaseActivity implements PostsAdapter.OnPostCli
     }
 
     private void initSwipeRefresh() {
-        swipeRefreshLayout.setOnRefreshListener(() -> viewModel.onFullRefreshClick());
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            viewModel.onFullRefreshClick();
+            adapter.refresh();
+        });
     }
 
     private void initRecycleView() {
