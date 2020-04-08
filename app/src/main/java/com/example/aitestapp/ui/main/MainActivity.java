@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity implements PostsAdapter.OnPostCli
         swipeRefreshLayout.setOnRefreshListener(() -> {
             viewModel.onFullRefreshClick();
             adapter.refresh();
+            setToolbarTitle(getString(R.string.no_items_selected));
         });
     }
 
@@ -65,6 +66,10 @@ public class MainActivity extends BaseActivity implements PostsAdapter.OnPostCli
         int count = adapter.getSelectedItems().size();
 
         String text = getResources().getQuantityString(R.plurals.items_selected_format, count);
-        toolbarTextView.setText(String.format(text, count));
+        setToolbarTitle(String.format(text, count));
+    }
+
+    private void setToolbarTitle(String text) {
+        toolbarTextView.setText(text);
     }
 }
