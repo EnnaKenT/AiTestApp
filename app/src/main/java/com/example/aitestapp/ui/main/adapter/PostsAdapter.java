@@ -48,6 +48,7 @@ public class PostsAdapter extends RecyclerViewAdapter<Hit, PostsAdapter.Holder> 
         } else {
             selectedItems.put(position, true);
         }
+        notifyItemChanged(position);
     }
 
     @NonNull
