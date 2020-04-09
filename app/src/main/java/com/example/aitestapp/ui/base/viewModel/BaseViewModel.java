@@ -1,5 +1,9 @@
 package com.example.aitestapp.ui.base.viewModel;
 
-public  interface BaseViewModel {
+import androidx.lifecycle.LiveData;
+
+public interface BaseViewModel {
+
+    LiveData<String> getErrorsMessageLiveData();
 
 }

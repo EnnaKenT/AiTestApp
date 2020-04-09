@@ -22,7 +22,6 @@ public class MainViewModelImpl extends BaseViewModelImpl implements MainViewMode
 
     private List<Hit> hitsList = new ArrayList<>();
     private MutableLiveData<List<Hit>> hitsPage = new MutableLiveData<>(new ArrayList<>());
-    private MutableLiveData<String> errorsMessage = new MutableLiveData<>(null);
 
     private int getPageAndIncrease() {
         return page++;
@@ -39,12 +38,8 @@ public class MainViewModelImpl extends BaseViewModelImpl implements MainViewMode
         isLoading = true;
         page = 0;
         postService.getPosts(getPageAndIncrease())
+                .doOnEvent((getPostsResponseModel, throwable) -> isLoading = false)
                 .subscribe(getPostsSubscriber(true), this::showError);
-    }
-
-    private void showError(Throwable throwable) {
-        isLoading = false;
-        errorsMessage.setValue(throwable != null ? throwable.getMessage() : "Error is null");
     }
 
     @Override
@@ -57,6 +52,7 @@ public class MainViewModelImpl extends BaseViewModelImpl implements MainViewMode
         if (!isLoading) {
             isLoading = true;
             postService.getPosts(getPageAndIncrease())
+                    .doOnEvent((getPostsResponseModel, throwable) -> isLoading = false)
                     .subscribe(getPostsSubscriber(false), this::showError);
         }
     }
@@ -66,17 +62,12 @@ public class MainViewModelImpl extends BaseViewModelImpl implements MainViewMode
             if (isFirstPage) hitsList.clear();
             hitsList.addAll(postsResponseModel.getHits());
             hitsPage.setValue(hitsList);
-            isLoading = false;
         };
-    }
-
-    @Override
-    public LiveData<String> getErrorsMessageLiveData() {
-        return errorsMessage;
     }
 
     @Override
     public LiveData<List<Hit>> getHitsLiveData() {
         return hitsPage;
     }
+
 }

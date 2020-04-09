@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
